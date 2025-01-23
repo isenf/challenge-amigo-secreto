@@ -1,35 +1,47 @@
 // Lógica challenge
-let textInput = document.querySelector('input')
-let elementoLista = document.querySelector('ul')
-let listaDeAmigos = []
-let btnSortear = document.getElementById('btn-sortear');
-btnSortear.addEventListener('click', ()=>{sortearAmigo(listaDeAmigos)})
+document.addEventListener('DOMContentLoaded', ()=>{
+    const textInput = document.querySelector('input');
+    const elementoLista = document.querySelector('ul');
+    const listaDeAmigos = [];
+    const btnSortear = document.getElementById('btn-sortear');
+    const btnAdicionar = document.getElementById('btn-adicionar');
 
-function adicionarAmigo(){
-    if(textInput.value == ''){
-        alert("Você precisa digitar o nome do amigo para adicioná-lo!")
-        btnSortear.setAttribute('disabled', true)
-        return
+    btnSortear.addEventListener('click', ()=>{
+        sortearAmigo(listaDeAmigos, elementoLista);
+    });
+
+    btnAdicionar.addEventListener('click', ()=>{
+        adicionarAmigo(textInput, listaDeAmigos, btnSortear, elementoLista);
+    });
+});
+
+function adicionarAmigo(input, lista, botao, elemento){
+    if(input.value == ''){
+        alert("Você precisa digitar o nome do amigo para adicioná-lo!");
+        botao.setAttribute('disabled', true);
+        return;
     }
-    listaDeAmigos.push(textInput.value)
-    atualizaListaAmigos(textInput.value)
-    btnSortear.removeAttribute('disabled')
+    lista.push(input.value);
+    atualizaListaAmigos(input.value, elemento);
+    botao.removeAttribute('disabled');
 }
 
-function atualizaListaAmigos(amigo){
+function atualizaListaAmigos(amigo, elemento){
     var li = document.createElement('li');
     li.textContent = amigo;
-    elementoLista.appendChild(li)
+    elemento.appendChild(li);
 }
 
-function sortearAmigo(lista){
-    let tamanho = lista.length
-    let sorteado = lista[Math.floor(Math.random() * tamanho)];
+function gerarSorteado(lista){
+    return lista[Math.floor(Math.random() * lista.length)];
+}
 
-    let texto = document.createElement('p');
+
+function sortearAmigo(lista, elemento){
+    const sorteado = gerarSorteado(lista);
+    const texto = document.createElement('p');
+
     texto.textContent = `O amigo sorteado foi ${sorteado}`;
-    document.body.appendChild(texto);
+    elemento.parentNode.replaceChild(texto, elemento)
 
-    //console.log(sorteado)
 }
-
