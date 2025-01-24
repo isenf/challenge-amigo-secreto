@@ -6,13 +6,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const btnSortear = document.getElementById('btn-sortear');
     const btnAdicionar = document.getElementById('btn-adicionar');
 
+    btnAdicionar.addEventListener('click', ()=>{
+        adicionarAmigo(textInput, listaDeAmigos, btnSortear, elementoLista);
+    });
+
     btnSortear.addEventListener('click', ()=>{
         sortearAmigo(listaDeAmigos, elementoLista);
     });
 
-    btnAdicionar.addEventListener('click', ()=>{
-        adicionarAmigo(textInput, listaDeAmigos, btnSortear, elementoLista);
-    });
 });
 
 function adicionarAmigo(input, lista, botao, elemento){
@@ -21,9 +22,15 @@ function adicionarAmigo(input, lista, botao, elemento){
         botao.setAttribute('disabled', true);
         return;
     }
+    if(verificaLista(lista, input.value)){
+        alert(`${input.value} já está na lista de amigos!`);
+        return;
+    }
+
     lista.push(input.value);
     atualizaListaAmigos(input.value, elemento);
     botao.removeAttribute('disabled');
+    input.value = ''
 }
 
 function atualizaListaAmigos(amigo, elemento){
@@ -42,6 +49,9 @@ function sortearAmigo(lista, elemento){
     const texto = document.createElement('p');
 
     texto.textContent = `O amigo sorteado foi ${sorteado}`;
-    elemento.parentNode.replaceChild(texto, elemento)
+    elemento.parentNode.replaceChild(texto, elemento);
+}
 
+function verificaLista(lista, amigo){
+    return lista.includes(amigo);
 }
