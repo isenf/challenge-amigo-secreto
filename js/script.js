@@ -78,10 +78,11 @@ function removerAmigo(amigo, lista, elementoLi, botaoSortear){
 }
 
 function criaBotaoRemover(amigo, lista, li, botaoSortear){
-    const botaoRemover = document.createElement('img');
-    botaoRemover.src = './assets/lixeira.png';
-    botaoRemover.alt = 'Remover';
-    botaoRemover.style.width = '20px';
+    const botaoRemover = document.createElement('span');
+    botaoRemover.className = 'material-symbols-outlined'
+    botaoRemover.innerHTML = 'delete';
+    //botaoRemover.alt = 'Remover';
+    botaoRemover.style.width = '24px';
 
     botaoRemover.addEventListener('click', ()=>{
         removerAmigo(amigo, lista, li, botaoSortear)
