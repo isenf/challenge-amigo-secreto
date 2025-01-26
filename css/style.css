@@ -90,4 +90,17 @@ button{
     color: var(--primary);
     background-color: var(--secondary);
     padding: .5rem;
+    border-style: none;
 }
+
+.content {
+    display: grid; 
+    gap: 10px;
+    justify-items: center;
+}
+
+
+.inline-group {
+    display: flex;
+}
+
