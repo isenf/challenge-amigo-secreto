@@ -83,17 +83,10 @@ img {
 }
 
 
-.inline-group {
-    margin-top: 10px;
-    display: flex;
-    border: 2px solid var(--details);
-    border-radius: 12px;
-}
 
 .inline-elements{
     height: 48px;
     border: none;
-    
 }
 
 input{
@@ -102,6 +95,17 @@ input{
     color: black;
     border-right: none;
     border-radius: 10px 0 0 10px;
+    padding: 0px 10px;
+}
+
+input[type='text']:focus{
+    outline: none;
+    
+}
+
+input::placeholder{
+    color: gray;
+    font-style: italic;
 }
 
 button{
@@ -109,9 +113,29 @@ button{
     background-color: var(--secondary);
     padding: .5rem;
     border-style: none;
+    cursor: pointer;
 }
+
+button:disabled{
+    background-color: gray;
+}
+
 
 #btn-adicionar{
     border-left: none;
     border-radius: 0 10px 10px 0;
+}
+
+#btn-sortear{
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+}
+
+.inline-group {
+    margin-top: 10px;
+    display: flex;
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    overflow: hidden;
 }
