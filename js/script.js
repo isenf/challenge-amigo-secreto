@@ -81,8 +81,8 @@ function criaBotaoRemover(amigo, lista, li, botaoSortear){
     const botaoRemover = document.createElement('span');
     botaoRemover.className = 'material-symbols-outlined'
     botaoRemover.innerHTML = 'delete';
-    //botaoRemover.alt = 'Remover';
     botaoRemover.style.width = '24px';
+    botaoRemover.style.color = 'red';
 
     botaoRemover.addEventListener('click', ()=>{
         removerAmigo(amigo, lista, li, botaoSortear)
