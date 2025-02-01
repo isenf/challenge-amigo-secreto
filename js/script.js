@@ -39,6 +39,7 @@ function adicionarAmigo(input, lista, botaoSortear, elemento){
 function atualizaListaAmigos(amigo, lista, elemento, botaoSortear){
     const li = document.createElement('li');
     li.textContent = amigo;
+    li.classList.add('lista-amigos');
     elemento.appendChild(li);
 
     const botaoRemover = criaBotaoRemover(amigo, lista, li, botaoSortear);
@@ -56,6 +57,7 @@ function sortearAmigo(lista, elemento){
     const texto = document.createElement('p');
 
     texto.textContent = `O amigo sorteado foi ${sorteado}`;
+    texto.classList.add('sorteado');
     elemento.parentNode.replaceChild(texto, elemento);
 }
 
