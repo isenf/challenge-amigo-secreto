@@ -59,6 +59,8 @@ function sortearAmigo(lista, elemento){
     texto.textContent = `O amigo sorteado foi ${sorteado}`;
     texto.classList.add('sorteado');
     elemento.parentNode.replaceChild(texto, elemento);
+
+    substituirBotaoSortear();
 }
 
 function verificaLista(lista, amigo){
@@ -95,4 +97,14 @@ function criaBotaoRemover(amigo, lista, li, botaoSortear){
 
 function atualizaStatusBtnSortear(lista, botaoSortear){
     lista.length === 0 ? botaoSortear.setAttribute('disabled', true) : botaoSortear.removeAttribute('disabled');
+}
+
+function substituirBotaoSortear() {
+    const btnSortear = document.getElementById('btn-sortear');
+    btnSortear.textContent = 'Recomeçar';
+    btnSortear.removeEventListener('click', sortearAmigo); 
+
+    btnSortear.addEventListener('click', () => {
+        location.reload();
+    });
 }
