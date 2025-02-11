@@ -150,7 +150,6 @@ button:disabled{
     color: var(--primary);
     width: 100%;
     max-width: 300px;
-    text-transform: capitalize;
 }
 
 .lista-amigos:hover {
